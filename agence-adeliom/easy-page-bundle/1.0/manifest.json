@@ -3,6 +3,7 @@
         "Adeliom\\EasyPageBundle\\EasyPageBundle": ["all"]
     },
     "copy-from-recipe": {
-        "config/": "%CONFIG_DIR%/"
+        "config/": "%CONFIG_DIR%/",
+        "src/": "%SRC_DIR%/"
     }
 }

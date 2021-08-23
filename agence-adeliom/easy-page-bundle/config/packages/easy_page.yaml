@@ -1,0 +1,11 @@
+easy_page:
+  page_class: App\Entity\Page\Page
+  page_repository: App\Repository\Page\PageRepository
+  page_controller: App\Controller\Page\PageController
+
+
+services:
+
+    App\Controller\Page\PageController:
+        calls:
+            - [ 'setRepository', [ '@easy_page.repository' ] ]
