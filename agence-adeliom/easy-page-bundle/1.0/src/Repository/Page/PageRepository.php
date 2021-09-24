@@ -2,7 +2,7 @@
 
 namespace App\Repository\Page;
 
-use Adeliom\EasyPageBundle\Repository\BasePageRepository;
+use Adeliom\EasyPageBundle\Repository\PageRepository as BasePageRepository;
 use App\Entity\Page\Page;
 use Doctrine\Persistence\ManagerRegistry;
 

@@ -5,7 +5,6 @@ easy_page:
 
 
 services:
-
     App\Controller\Page\PageController:
         calls:
             - [ 'setRepository', [ '@easy_page.repository' ] ]
