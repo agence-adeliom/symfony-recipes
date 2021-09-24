@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Page;
+namespace App\Entity\EasyPage;
 
 use Adeliom\EasyPageBundle\Entity\Page as BasePage;
 use Doctrine\ORM\Mapping as ORM;

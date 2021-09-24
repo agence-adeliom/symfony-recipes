@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repository\Page;
+namespace App\Repository\EasyPage;
 
 use Adeliom\EasyPageBundle\Repository\PageRepository as BasePageRepository;
-use App\Entity\Page\Page;
+use App\Entity\EasyPage\Page;
 use Doctrine\Persistence\ManagerRegistry;
 
 

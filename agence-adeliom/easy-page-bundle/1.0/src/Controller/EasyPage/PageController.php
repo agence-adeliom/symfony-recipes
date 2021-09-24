@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Page;
+namespace App\Controller\EasyPage;
 
 use Adeliom\EasyPageBundle\Controller\PageController as BasePageController;
 
