@@ -1,7 +1,7 @@
 easy_page:
-  page_class: App\Entity\Page\Page
-  page_repository: App\Repository\Page\PageRepository
-  page_controller: App\Controller\Page\PageController
+  page_class: App\Entity\EasyPage\Page
+  page_repository: App\Repository\EasyPage\PageRepository
+  page_controller: App\Controller\EasyPage\PageController
 
 
 services:
