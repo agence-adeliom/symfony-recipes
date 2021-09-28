@@ -18,7 +18,7 @@ twig:
     - '@EasyShop/form/admin_product.html.twig'
   globals:
     sylius: "@sylius.context.shopper"
-    sylius_base_locale: "%locale%"
+    sylius_base_locale: "%kernel.default_locale%"
     sylius_meta:
       version: !php/const Sylius\Bundle\CoreBundle\Application\Kernel::VERSION
 
@@ -75,7 +75,7 @@ liip_imagine:
         thumbnail: { size: [ 640, 480 ], mode: outbound }
 
 stof_doctrine_extensions:
-  default_locale: "%locale%"
+  default_locale: "%kernel.default_locale%"
   orm:
     default:
       tree: true
