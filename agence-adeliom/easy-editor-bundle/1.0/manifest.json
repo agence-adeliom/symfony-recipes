@@ -1,0 +1,9 @@
+{
+    "bundles": {
+        "Adeliom\\EasyEditorBundle\\EasyEditorBundle": ["all"]
+    },
+    "copy-from-recipe": {
+        "src/": "%SRC_DIR%/",
+        "templates/": "templates/"
+    }
+}
