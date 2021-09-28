@@ -50,6 +50,3 @@ sylius_shop_homepage:
     defaults:
         route: easy_page_index
         permanent: true
-
-flux_se_sylius_payum_monetico_notify:
-    resource: "@FluxSESyliusPayumMoneticoPlugin/Resources/config/routing/notify.yaml"
