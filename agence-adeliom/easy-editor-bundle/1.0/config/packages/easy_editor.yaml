@@ -5,4 +5,4 @@ twig:
 doctrine:
   dbal:
     types:
-      easy_media_type: Adeliom\EasyEditorBundle\Types\EasyEditorType
+      easy_editor_type: Adeliom\EasyEditorBundle\Types\EasyEditorType
