@@ -10,3 +10,4 @@ doctrine:
 easy_media:
   media_entity: App\Entity\EasyMedia\Media
   folder_entity: App\Entity\EasyMedia\Folder
+
