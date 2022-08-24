@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyShop\Marketing;
 
 use Adeliom\EasyShopBundle\Admin\Marketing\PromotionCrudController as BasePromotionCrudController;

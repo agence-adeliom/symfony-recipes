@@ -10,15 +10,11 @@ use Sylius\Component\Taxonomy\Model\TaxonTranslationInterface;
 
 /**
  * @ORM\Entity
+ *
  * @ORM\Table(name="sylius_taxon")
  */
 class Taxon extends BaseTaxon
 {
-    protected function createTranslation(): TaxonTranslationInterface
-    {
-        return new TaxonTranslation();
-    }
-
     public static function getTranslationClass(): string
     {
         return TaxonTranslation::class;
@@ -30,14 +26,18 @@ class Taxon extends BaseTaxon
 
         $current = $this;
         do {
-            if ($name){
-                $tree    = ((string) $current).$separator.$tree;
-            }else{
-                $tree    = $current->getSlug().$separator.$tree;
+            if ($name) {
+                $tree = ((string) $current).$separator.$tree;
+            } else {
+                $tree = $current->getSlug().$separator.$tree;
             }
             $current = $current->getParent();
         } while ($current);
 
         return trim($tree, $separator);
+    }
+    protected function createTranslation(): TaxonTranslationInterface
+    {
+        return new TaxonTranslation();
     }
 }

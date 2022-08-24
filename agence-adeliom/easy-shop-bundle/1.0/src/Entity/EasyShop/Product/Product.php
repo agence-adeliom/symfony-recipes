@@ -12,7 +12,9 @@ use Sylius\Component\Product\Model\ProductTranslationInterface;
 
 /**
  * @ORM\Entity
+ *
  * @ORM\HasLifecycleCallbacks()
+ *
  * @ORM\Table(name="sylius_product", indexes={
  *     @ORM\Index(name="created_at_index", columns={"created_at"}),
  *     @ORM\Index(name="enabled_index", columns={"enabled"})
@@ -20,10 +22,9 @@ use Sylius\Component\Product\Model\ProductTranslationInterface;
  */
 class Product extends BaseProduct
 {
-    protected function createTranslation(): ProductTranslationInterface
-    {
-        return new ProductTranslation();
-    }
+    protected ProductVariant $variant;
+
+    protected $virtualVariantChannelPricing;
 
     public static function getTranslationClass(): string
     {
@@ -32,10 +33,10 @@ class Product extends BaseProduct
 
     /**
      * @ORM\PrePersist()
-     * @param LifecycleEventArgs $event
+     *
      * @throws ORMException
      */
-    public function onCreate(LifecycleEventArgs $event)
+    public function onCreate(LifecycleEventArgs $event): void
     {
         $object = $event->getObject();
         if ($object->isSimple()) {
@@ -48,10 +49,10 @@ class Product extends BaseProduct
 
     /**
      * @ORM\PostUpdate()
-     * @param LifecycleEventArgs $event
+     *
      * @throws ORMException
      */
-    public function onUpdate(LifecycleEventArgs $event)
+    public function onUpdate(LifecycleEventArgs $event): void
     {
         $object = $event->getObject();
         if ($object->isSimple()) {
@@ -64,34 +65,24 @@ class Product extends BaseProduct
         }
     }
 
-    protected ProductVariant $variant;
-
     public function getVariant(): ProductVariant
     {
         return $this->variants[0];
     }
 
-    public function setVariant(ProductVariant $variant)
+    public function setVariant(ProductVariant $variant): void
     {
         $this->variants[0] = $variant;
     }
 
-    protected $virtualVariantChannelPricing;
-
-    /**
-     * @return mixed
-     */
-    public function getVirtualVariantChannelPricing()
+    public function getVirtualVariantChannelPricing(): mixed
     {
         return [
-            'channelPricings' => $this->getVariant()->getChannelPricings()
+            'channelPricings' => $this->getVariant()->getChannelPricings(),
         ];
     }
 
-    /**
-     * @param mixed $virtualVariantChannelPricing
-     */
-    public function setVirtualVariantChannelPricing($virtualVariantChannelPricing): void
+    public function setVirtualVariantChannelPricing(mixed $virtualVariantChannelPricing): void
     {
         $variant = $this->getVariant();
         foreach ($variant->getChannelPricings() as $channelPricing) {
@@ -102,5 +93,8 @@ class Product extends BaseProduct
         }
         $this->variants[0] = $variant;
     }
-
+    protected function createTranslation(): ProductTranslationInterface
+    {
+        return new ProductTranslation();
+    }
 }

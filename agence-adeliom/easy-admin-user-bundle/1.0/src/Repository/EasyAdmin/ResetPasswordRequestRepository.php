@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository\EasyAdmin;
 
 use Adeliom\EasyAdminUserBundle\Repository\ResetPasswordRequestRepository as BaseResetPasswordRequestRepository;

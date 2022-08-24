@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyShop\Customer;
 
-use App\Entity\EasyShop\Customer\Customer;
 use Adeliom\EasyShopBundle\Admin\Customer\CustomerCrudController as BaseCustomerCrudController;
+use App\Entity\EasyShop\Customer\Customer;
 
 class CustomerCrudController extends BaseCustomerCrudController
 {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyShop\Customer;
 
 use Adeliom\EasyShopBundle\Admin\Customer\CustomerGroupCrudController as BaseCustomerGroupCrudController;

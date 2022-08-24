@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyBlog;
 
 use Adeliom\EasyBlogBundle\Controller\Admin\PostCrudController as BasePostCrudController;
@@ -13,7 +15,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Filter\ChoiceFilter;
 
 class PostCrudController extends BasePostCrudController
 {
-
     public static function getEntityFqcn(): string
     {
         return Post::class;
@@ -29,9 +30,8 @@ class PostCrudController extends BasePostCrudController
 
     public function configureFilters(Filters $filters): Filters
     {
-        $filters->add(ChoiceFilter::new("state","Status")->setChoices(ThreeStateStatusEnum::toArray()));
+        $filters->add(ChoiceFilter::new('state', 'Status')->setChoices(ThreeStateStatusEnum::toArray()));
 
         return $filters;
     }
-
 }

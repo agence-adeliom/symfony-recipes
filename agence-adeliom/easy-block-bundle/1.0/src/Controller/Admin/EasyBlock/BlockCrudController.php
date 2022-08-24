@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyBlock;
 
 use Adeliom\EasyBlockBundle\Controller\BlockCrudController as BaseBlockCrudController;

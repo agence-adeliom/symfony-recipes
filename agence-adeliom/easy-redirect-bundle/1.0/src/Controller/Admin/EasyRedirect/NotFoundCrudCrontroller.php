@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyRedirect;
 
 use Adeliom\EasyRedirectBundle\Admin\NotFoundCrudCrontroller as BaseNotFoundCrudCrontroller;

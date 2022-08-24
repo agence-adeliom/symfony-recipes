@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity\EasyFaq;
 
 use Adeliom\EasyFaqBundle\Entity\EntryEntity as BaseEntryEntity;
@@ -7,7 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EasyFaq\EntryRepository")
+ *
  * @ORM\HasLifecycleCallbacks()
+ *
  * @ORM\Table(
  *     name="easy_faq__entry",
  *     indexes={
@@ -17,5 +21,4 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Entry extends BaseEntryEntity
 {
-
 }

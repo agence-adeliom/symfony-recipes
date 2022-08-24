@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyShop\Marketing;
 
-use App\Entity\EasyShop\Product\ProductReview;
 use Adeliom\EasyShopBundle\Admin\Marketing\ReviewCrudController as BaseReviewCrudController;
+use App\Entity\EasyShop\Product\ProductReview;
 
 class ReviewCrudController extends BaseReviewCrudController
 {

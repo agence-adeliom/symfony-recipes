@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyShop\Sales;
 
 use Adeliom\EasyShopBundle\Admin\Sales\ShipmentCrudController as BaseShipmentCrudController;

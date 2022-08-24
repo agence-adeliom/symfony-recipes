@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyAdminUser;
 
 use Adeliom\EasyAdminUserBundle\Controller\Admin\EasyAdminUserCrudController as BaseEasyAdminUserCrudController;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyShop\Products;
 
 use Adeliom\EasyShopBundle\Admin\Products\ProductOptionCrudController as BaseProductOptionCrudController;

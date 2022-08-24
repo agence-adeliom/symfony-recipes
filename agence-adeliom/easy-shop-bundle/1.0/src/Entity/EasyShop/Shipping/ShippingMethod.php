@@ -10,17 +10,17 @@ use Sylius\Component\Shipping\Model\ShippingMethodTranslationInterface;
 
 /**
  * @ORM\Entity
+ *
  * @ORM\Table(name="sylius_shipping_method")
  */
 class ShippingMethod extends BaseShippingMethod
 {
-    protected function createTranslation(): ShippingMethodTranslationInterface
-    {
-        return new ShippingMethodTranslation();
-    }
-
     public static function getTranslationClass(): string
     {
         return ShippingMethodTranslation::class;
+    }
+    protected function createTranslation(): ShippingMethodTranslationInterface
+    {
+        return new ShippingMethodTranslation();
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin\EasyPage;
 
 use Adeliom\EasyPageBundle\Controller\PageCrudController as BasePageCrudController;
