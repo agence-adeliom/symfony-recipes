@@ -1,0 +1,27 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-fields-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyFieldsBundle\\EasyFieldsBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/routes/easy_fields.yaml": {
+                    "contents": [
+                        "easy_fields:",
+                        "  resource: '@EasyFieldsBundle/Resources/config/routes.xml'",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "e56e700e4974e09d72d6e2fc76d86387bff588ca"
+        }
+    }
+}

@@ -1,0 +1,207 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-faq-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyFaqBundle\\EasyFaqBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/easy_faq.yaml": {
+                    "contents": [
+                        "easy_faq:",
+                        "  entry:",
+                        "    class: App\\Entity\\EasyFaq\\Entry",
+                        "    repository: App\\Repository\\EasyFaq\\EntryRepository",
+                        "    crud: App\\Controller\\Admin\\EasyFaq\\EntryCrudController",
+                        "  category:",
+                        "    class: App\\Entity\\EasyFaq\\Category",
+                        "    repository: App\\Repository\\EasyFaq\\CategoryRepository",
+                        "    crud: App\\Controller\\Admin\\EasyFaq\\CategoryCrudController",
+                        "  page:",
+                        "    root_path: '/faq'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/easy_faq.yaml": {
+                    "contents": [
+                        "easy_faq:",
+                        "  resource: '@EasyFaqBundle/Resources/config/routes.xml'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyFaq/CategoryCrudController.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyFaq;",
+                        "",
+                        "use Adeliom\\EasyFaqBundle\\Controller\\CategoryCrudController as BaseCategoryCrudController;",
+                        "use App\\Entity\\EasyFaq\\Category;",
+                        "",
+                        "class CategoryCrudController extends BaseCategoryCrudController",
+                        "{",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return Category::class;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyFaq/EntryCrudController.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyFaq;",
+                        "",
+                        "use Adeliom\\EasyFaqBundle\\Controller\\EntryCrudController as BaseEntryCrudController;",
+                        "use App\\Entity\\EasyFaq\\Entry;",
+                        "",
+                        "class EntryCrudController extends BaseEntryCrudController",
+                        "{",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return Entry::class;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyFaq/Category.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\EasyFaq;",
+                        "",
+                        "use Adeliom\\EasyFaqBundle\\Entity\\CategoryEntity as BaseCategoryEntity;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "/**",
+                        " * @ORM\\Table(",
+                        " *     name=\"easy_faq__category\",",
+                        " *     indexes={",
+                        " *       @ORM\\Index(name=\"easy_faq_category_indexes\", columns={\"created_at\", \"status\"})",
+                        " *     }",
+                        " * )",
+                        " *",
+                        " * @ORM\\Entity(repositoryClass=\"App\\Repository\\EasyFaq\\CategoryRepository\")",
+                        " *",
+                        " * @ORM\\HasLifecycleCallbacks()",
+                        " */",
+                        "class Category extends BaseCategoryEntity",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyFaq/Entry.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\EasyFaq;",
+                        "",
+                        "use Adeliom\\EasyFaqBundle\\Entity\\EntryEntity as BaseEntryEntity;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=\"App\\Repository\\EasyFaq\\EntryRepository\")",
+                        " *",
+                        " * @ORM\\HasLifecycleCallbacks()",
+                        " *",
+                        " * @ORM\\Table(",
+                        " *     name=\"easy_faq__entry\",",
+                        " *     indexes={",
+                        " *      @ORM\\Index(name=\"easy_faq_indexes\", columns={\"state\"})",
+                        " *     }",
+                        " * )",
+                        " */",
+                        "class Entry extends BaseEntryEntity",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/EasyFaq/CategoryRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Repository\\EasyFaq;",
+                        "",
+                        "use Adeliom\\EasyFaqBundle\\Repository\\CategoryRepository as BaseCategoryRepository;",
+                        "use App\\Entity\\EasyFaq\\Category;",
+                        "use Doctrine\\Persistence\\ManagerRegistry;",
+                        "",
+                        "/**",
+                        " * @method Category|null find($id, $lockMode = null, $lockVersion = null)",
+                        " * @method Category|null findOneBy(array $criteria, array $orderBy = null)",
+                        " * @method array<Category> findAll()",
+                        " * @method array<Category> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)",
+                        " */",
+                        "class CategoryRepository extends BaseCategoryRepository",
+                        "{",
+                        "    public function __construct(ManagerRegistry $registry)",
+                        "    {",
+                        "        parent::__construct($registry, Category::class);",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/EasyFaq/EntryRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Repository\\EasyFaq;",
+                        "",
+                        "use Adeliom\\EasyFaqBundle\\Repository\\EntryRepository as BaseEntryRepository;",
+                        "use App\\Entity\\EasyFaq\\Entry;",
+                        "use Doctrine\\Persistence\\ManagerRegistry;",
+                        "",
+                        "/**",
+                        " * @method Entry|null find($id, $lockMode = null, $lockVersion = null)",
+                        " * @method Entry|null findOneBy(array $criteria, array $orderBy = null)",
+                        " * @method array<Entry> findAll()",
+                        " * @method array<Entry> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)",
+                        " */",
+                        "class EntryRepository extends BaseEntryRepository",
+                        "{",
+                        "    public function __construct(ManagerRegistry $registry)",
+                        "    {",
+                        "        parent::__construct($registry, Entry::class);",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "4d13dca9616c905681167fd97e366d636c24f1c3"
+        }
+    }
+}

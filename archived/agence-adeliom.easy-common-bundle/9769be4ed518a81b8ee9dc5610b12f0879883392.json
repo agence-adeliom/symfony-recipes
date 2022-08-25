@@ -1,0 +1,15 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-common-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyCommonBundle\\EasyCommonBundle": [
+                        "all"
+                    ]
+                }
+            },
+            "files": [],
+            "ref": "9769be4ed518a81b8ee9dc5610b12f0879883392"
+        }
+    }
+}
