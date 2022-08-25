@@ -19,6 +19,7 @@ class ShippingMethod extends BaseShippingMethod
     {
         return ShippingMethodTranslation::class;
     }
+
     protected function createTranslation(): ShippingMethodTranslationInterface
     {
         return new ShippingMethodTranslation();

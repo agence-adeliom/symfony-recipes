@@ -36,6 +36,7 @@ class Taxon extends BaseTaxon
 
         return trim($tree, $separator);
     }
+
     protected function createTranslation(): TaxonTranslationInterface
     {
         return new TaxonTranslation();

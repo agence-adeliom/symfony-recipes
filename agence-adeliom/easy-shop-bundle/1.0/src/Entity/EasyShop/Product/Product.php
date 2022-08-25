@@ -93,6 +93,7 @@ class Product extends BaseProduct
         }
         $this->variants[0] = $variant;
     }
+
     protected function createTranslation(): ProductTranslationInterface
     {
         return new ProductTranslation();

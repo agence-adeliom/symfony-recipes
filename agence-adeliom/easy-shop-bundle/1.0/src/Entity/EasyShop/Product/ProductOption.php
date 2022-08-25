@@ -19,6 +19,7 @@ class ProductOption extends BaseProductOption
     {
         return ProductOptionTranslation::class;
     }
+
     protected function createTranslation(): ProductOptionTranslationInterface
     {
         return new ProductOptionTranslation();

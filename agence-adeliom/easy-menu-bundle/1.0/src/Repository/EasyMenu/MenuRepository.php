@@ -9,8 +9,8 @@ use App\Entity\EasyMenu\Menu;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Menu|null find($id, $lockMode = null, $lockVersion = null)
- * @method Menu|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Menu|null   find($id, $lockMode = null, $lockVersion = null)
+ * @method Menu|null   findOneBy(array $criteria, array $orderBy = null)
  * @method array<Menu> findAll()
  * @method array<Menu> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */

@@ -9,8 +9,8 @@ use App\Entity\EasyMenu\MenuItem;
 use Doctrine\ORM\EntityManager;
 
 /**
- * @method MenuItem|null find($id, $lockMode = null, $lockVersion = null)
- * @method MenuItem|null findOneBy(array $criteria, array $orderBy = null)
+ * @method MenuItem|null   find($id, $lockMode = null, $lockVersion = null)
+ * @method MenuItem|null   findOneBy(array $criteria, array $orderBy = null)
  * @method array<MenuItem> findAll()
  * @method array<MenuItem> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */

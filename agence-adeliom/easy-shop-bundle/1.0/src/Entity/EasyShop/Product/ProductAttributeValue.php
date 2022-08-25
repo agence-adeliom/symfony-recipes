@@ -18,6 +18,6 @@ class ProductAttributeValue extends BaseProductAttributeValue
 {
     public function __toString()
     {
-        return $this->getLocaleCode() . ' | ' . $this->getName() . ' : ' . (! is_array($this->getValue()) ? $this->getValue() : implode(', ', $this->getValue()));
+        return $this->getLocaleCode().' | '.$this->getName().' : '.(!is_array($this->getValue()) ? $this->getValue() : implode(', ', $this->getValue()));
     }
 }

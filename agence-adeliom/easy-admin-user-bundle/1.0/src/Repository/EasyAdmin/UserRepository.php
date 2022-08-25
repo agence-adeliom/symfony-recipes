@@ -9,8 +9,8 @@ use App\Entity\EasyAdmin\User;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method User|null find($id, $lockMode = null, $lockVersion = null)
- * @method User|null findOneBy(array $criteria, array $orderBy = null)
+ * @method User|null   find($id, $lockMode = null, $lockVersion = null)
+ * @method User|null   findOneBy(array $criteria, array $orderBy = null)
  * @method array<User> findAll()
  * @method array<User> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
