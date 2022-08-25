@@ -1,0 +1,109 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-redirect-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyRedirectBundle\\EasyRedirectBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/easy_redirect.yaml": {
+                    "contents": [
+                        "easy_redirect:",
+                        "  redirect_class: App\\Entity\\EasyRedirect\\Redirect",
+                        "  not_found_class: App\\Entity\\EasyRedirect\\NotFound",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyRedirect/NotFoundCrudCrontroller.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyRedirect;",
+                        "",
+                        "use Adeliom\\EasyRedirectBundle\\Admin\\NotFoundCrudCrontroller as BaseNotFoundCrudCrontroller;",
+                        "use App\\Entity\\EasyRedirect\\NotFound;",
+                        "",
+                        "class NotFoundCrudCrontroller extends BaseNotFoundCrudCrontroller",
+                        "{",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return NotFound::class;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyRedirect/RedirectCrudCrontroller.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyRedirect;",
+                        "",
+                        "use Adeliom\\EasyRedirectBundle\\Admin\\RedirectCrudCrontroller as BaseRedirectCrudCrontroller;",
+                        "use App\\Entity\\EasyRedirect\\Redirect;",
+                        "",
+                        "class RedirectCrudCrontroller extends BaseRedirectCrudCrontroller",
+                        "{",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return Redirect::class;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyRedirect/NotFound.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\EasyRedirect;",
+                        "",
+                        "use Adeliom\\EasyRedirectBundle\\Entity\\NotFound as BaseNotFound;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity()",
+                        " * @ORM\\Table(name=\"easy_redirect__not_found\")",
+                        " */",
+                        "class NotFound extends BaseNotFound",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyRedirect/Redirect.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\EasyRedirect;",
+                        "",
+                        "use Adeliom\\EasyRedirectBundle\\Entity\\Redirect as BaseRedirect;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity()",
+                        " * @ORM\\Table(name=\"easy_redirect__redirect\")",
+                        " */",
+                        "class Redirect extends BaseRedirect",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "fd7e4f1807febf972299e5fef34ae4cdd96f6163"
+        }
+    }
+}

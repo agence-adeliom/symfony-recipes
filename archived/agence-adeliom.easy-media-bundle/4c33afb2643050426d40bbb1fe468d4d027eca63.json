@@ -1,0 +1,89 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-media-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyMediaBundle\\EasyMediaBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/easy_media.yaml": {
+                    "contents": [
+                        "twig:",
+                        "  form_themes:",
+                        "    - '@EasyMedia/form/easy-media.html.twig'",
+                        "",
+                        "doctrine:",
+                        "  dbal:",
+                        "    types:",
+                        "      easy_media_type: Adeliom\\EasyMediaBundle\\Types\\EasyMediaType",
+                        "",
+                        "easy_media:",
+                        "  lock_entity: App\\Entity\\EasyMedia\\Lock",
+                        "  metas_entity: App\\Entity\\EasyMedia\\Metas",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/easy_media.yaml": {
+                    "contents": [
+                        "easy_media:",
+                        "  # loads routes from the given routing file stored in some bundle",
+                        "  resource: '@EasyMediaBundle/Resources/config/routes.xml'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyMedia/Lock.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\EasyMedia;",
+                        "",
+                        "use Adeliom\\EasyMediaBundle\\Entity\\Lock as BaseLock;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity()",
+                        " * @ORM\\Table(name=\"easy_media__lock\")",
+                        " */",
+                        "class Lock extends BaseLock",
+                        "{",
+                        "",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyMedia/Metas.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\EasyMedia;",
+                        "",
+                        "use Adeliom\\EasyMediaBundle\\Entity\\Metas as BaseMetas;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity()",
+                        " * @ORM\\Table(name=\"easy_media__metas\")",
+                        " */",
+                        "class Metas extends BaseMetas",
+                        "{",
+                        "",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "4c33afb2643050426d40bbb1fe468d4d027eca63"
+        }
+    }
+}

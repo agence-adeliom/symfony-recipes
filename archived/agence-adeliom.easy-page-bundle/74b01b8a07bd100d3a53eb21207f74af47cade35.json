@@ -1,0 +1,101 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-page-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyPageBundle\\EasyPageBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/easy_page.yaml": {
+                    "contents": [
+                        "easy_page:",
+                        "  page_class: App\\Entity\\Page\\Page",
+                        "  page_repository: App\\Repository\\Page\\PageRepository",
+                        "  page_controller: App\\Controller\\Page\\PageController",
+                        "",
+                        "",
+                        "services:",
+                        "",
+                        "    App\\Controller\\Page\\PageController:",
+                        "        calls:",
+                        "            - [ 'setRepository', [ '@easy_page.repository' ] ]"
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Page/PageController.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Controller\\Page;",
+                        "",
+                        "use Adeliom\\EasyPageBundle\\Controller\\BasePageController;",
+                        "",
+                        "class PageController extends BasePageController",
+                        "{",
+                        "}"
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Page/Page.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Page;",
+                        "",
+                        "use Adeliom\\EasyPageBundle\\Entity\\BasePageEntity;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Symfony\\Component\\Validator\\Constraints as Assert;",
+                        "use Symfony\\Component\\Serializer\\Annotation\\Groups;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=\"App\\Repository\\Page\\PageRepository\")",
+                        " * @ORM\\HasLifecycleCallbacks()",
+                        " */",
+                        "class Page extends BasePageEntity",
+                        "{",
+                        "",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/Page/PageRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Repository\\Page;",
+                        "",
+                        "use Adeliom\\EasyPageBundle\\Repository\\BasePageRepository;",
+                        "use App\\Entity\\Page\\Page;",
+                        "use Doctrine\\Persistence\\ManagerRegistry;",
+                        "",
+                        "",
+                        "/**",
+                        " * @method Page|null find($id, $lockMode = null, $lockVersion = null)",
+                        " * @method Page|null findOneBy(array $criteria, array $orderBy = null)",
+                        " * @method Page[]    findAll()",
+                        " * @method Page[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)",
+                        " */",
+                        "class PageRepository extends BasePageRepository",
+                        "{",
+                        "    public function __construct(ManagerRegistry $registry)",
+                        "    {",
+                        "        parent::__construct($registry, Page::class);",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "74b01b8a07bd100d3a53eb21207f74af47cade35"
+        }
+    }
+}

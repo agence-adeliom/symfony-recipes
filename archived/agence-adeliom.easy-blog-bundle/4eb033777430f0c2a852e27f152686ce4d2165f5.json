@@ -1,0 +1,234 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-blog-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyAdminUserBundle\\EasyAdminUserBundle": [
+                        "all"
+                    ],
+                    "SymfonyCasts\\Bundle\\ResetPassword\\SymfonyCastsResetPasswordBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/easy_blog.yaml": {
+                    "contents": [
+                        "easy_blog:",
+                        "  post:",
+                        "    class: App\\Entity\\EasyBlog\\Post",
+                        "    repository: App\\Repository\\EasyBlog\\PostRepository",
+                        "    crud: App\\Controller\\Admin\\EasyBlog\\PostCrudController",
+                        "  category:",
+                        "    class: App\\Entity\\EasyBlog\\Category",
+                        "    repository: App\\Repository\\EasyBlog\\CategoryRepository",
+                        "    crud: App\\Controller\\Admin\\EasyBlog\\CategoryCrudController",
+                        "  page:",
+                        "    root_path: '/blog'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/easy_blog.yaml": {
+                    "contents": [
+                        "easy_blog:",
+                        "  resource: '@EasyBlogBundle/Resources/config/routes.xml'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyBlog/CategoryCrudController.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyBlog;",
+                        "",
+                        "use Adeliom\\EasyBlogBundle\\Controller\\Admin\\CategoryCrudController as BaseCategoryCrudController;",
+                        "use Adeliom\\EasyCommonBundle\\Enum\\ThreeStateStatusEnum;",
+                        "use App\\Entity\\EasyBlog\\Category;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Action;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Actions;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Crud;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Filters;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Filter\\ChoiceFilter;",
+                        "",
+                        "class CategoryCrudController extends BaseCategoryCrudController",
+                        "{",
+                        "",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return Category::class;",
+                        "    }",
+                        "",
+                        "    public function configureActions(Actions $actions): Actions",
+                        "    {",
+                        "        $actions = parent::configureActions($actions);",
+                        "        return $actions",
+                        "            ->add(Crud::PAGE_INDEX, Action::DETAIL)",
+                        "            ;",
+                        "    }",
+                        "",
+                        "    public function configureFilters(Filters $filters): Filters",
+                        "    {",
+                        "        $filters->add(ChoiceFilter::new(\"state\",\"Status\")->setChoices(ThreeStateStatusEnum::toArray()));",
+                        "",
+                        "        return $filters;",
+                        "    }",
+                        "",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyBlog/PostCrudController.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyBlog;",
+                        "",
+                        "use Adeliom\\EasyBlogBundle\\Controller\\Admin\\PostCrudController as BasePostCrudController;",
+                        "use Adeliom\\EasyCommonBundle\\Enum\\ThreeStateStatusEnum;",
+                        "use App\\Entity\\EasyBlog\\Post;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Action;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Actions;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Crud;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Filters;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Filter\\ChoiceFilter;",
+                        "",
+                        "class PostCrudController extends BasePostCrudController",
+                        "{",
+                        "",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return Post::class;",
+                        "    }",
+                        "",
+                        "    public function configureActions(Actions $actions): Actions",
+                        "    {",
+                        "        $actions = parent::configureActions($actions);",
+                        "        return $actions",
+                        "            ->add(Crud::PAGE_INDEX, Action::DETAIL)",
+                        "            ;",
+                        "    }",
+                        "",
+                        "    public function configureFilters(Filters $filters): Filters",
+                        "    {",
+                        "        $filters->add(ChoiceFilter::new(\"state\",\"Status\")->setChoices(ThreeStateStatusEnum::toArray()));",
+                        "",
+                        "        return $filters;",
+                        "    }",
+                        "",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyBlog/Category.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\EasyBlog;",
+                        "",
+                        "use Adeliom\\EasyBlogBundle\\Entity\\CategoryEntity as BaseCategoryEntity;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=\"App\\Repository\\EasyBlog\\CategoryRepository\")",
+                        " * @ORM\\Table(name=\"easy_post__category\")",
+                        " * @ORM\\HasLifecycleCallbacks()",
+                        " */",
+                        "class Category extends BaseCategoryEntity",
+                        "{",
+                        "",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyBlog/Post.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\EasyBlog;",
+                        "",
+                        "use Adeliom\\EasyBlogBundle\\Entity\\PostEntity as BasePostEntity;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=\"App\\Repository\\EasyBlog\\PostRepository\")",
+                        " * @ORM\\Table(name=\"easy_blog__post\")",
+                        " * @ORM\\HasLifecycleCallbacks()",
+                        " */",
+                        "class Post extends BasePostEntity",
+                        "{",
+                        "",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/EasyBlog/CategoryRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Repository\\EasyBlog;",
+                        "",
+                        "use Adeliom\\EasyBlogBundle\\Repository\\CategoryRepository as BaseCategoryRepository;",
+                        "use App\\Entity\\EasyBlog\\Category;",
+                        "use Doctrine\\Persistence\\ManagerRegistry;",
+                        "",
+                        "",
+                        "/**",
+                        " * @method Category|null find($id, $lockMode = null, $lockVersion = null)",
+                        " * @method Category|null findOneBy(array $criteria, array $orderBy = null)",
+                        " * @method Category[]    findAll()",
+                        " * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)",
+                        " */",
+                        "class CategoryRepository extends BaseCategoryRepository",
+                        "{",
+                        "    public function __construct(ManagerRegistry $registry)",
+                        "    {",
+                        "        parent::__construct($registry, Category::class);",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/EasyBlog/PostRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Repository\\EasyBlog;",
+                        "",
+                        "use Adeliom\\EasyBlogBundle\\Repository\\PostRepository as BasePostRepository;",
+                        "use App\\Entity\\EasyBlog\\Post;",
+                        "use Doctrine\\Persistence\\ManagerRegistry;",
+                        "",
+                        "",
+                        "/**",
+                        " * @method Post|null find($id, $lockMode = null, $lockVersion = null)",
+                        " * @method Post|null findOneBy(array $criteria, array $orderBy = null)",
+                        " * @method Post[]    findAll()",
+                        " * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)",
+                        " */",
+                        "class PostRepository extends BasePostRepository",
+                        "{",
+                        "    public function __construct(ManagerRegistry $registry)",
+                        "    {",
+                        "        parent::__construct($registry, Post::class);",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "4eb033777430f0c2a852e27f152686ce4d2165f5"
+        }
+    }
+}

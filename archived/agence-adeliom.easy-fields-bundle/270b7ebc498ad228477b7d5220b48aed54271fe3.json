@@ -1,0 +1,15 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-fields-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyFieldsBundle\\EasyFieldsBundle": [
+                        "all"
+                    ]
+                }
+            },
+            "files": [],
+            "ref": "270b7ebc498ad228477b7d5220b48aed54271fe3"
+        }
+    }
+}

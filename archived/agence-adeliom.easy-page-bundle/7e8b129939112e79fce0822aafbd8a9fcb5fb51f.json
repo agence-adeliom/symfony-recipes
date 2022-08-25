@@ -1,0 +1,19 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-page-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyPageBundle\\EasyPageBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": [],
+            "ref": "7e8b129939112e79fce0822aafbd8a9fcb5fb51f"
+        }
+    }
+}
