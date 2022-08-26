@@ -31,6 +31,9 @@
         "agence-adeliom/easy-fields-bundle": [
             "1.0"
         ],
+        "agence-adeliom/easy-gutenberg-bundle": [
+            "2.0"
+        ],
         "agence-adeliom/easy-media-bundle": [
             "1.0",
             "1.1",

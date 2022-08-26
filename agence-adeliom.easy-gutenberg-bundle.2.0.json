@@ -1,0 +1,27 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-gutenberg-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyGutenbergBundle\\EasyGutenbergBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/routes/easy_gutenberg.yaml": {
+                    "contents": [
+                        "easy_gutenberg:",
+                        "  resource: '@EasyGutenbergBundle/Resources/config/routes.xml'",
+                        ""
+                    ],
+                    "executable": true
+                }
+            },
+            "ref": "7aa54f40cfe5e957498eaffad451d29cab006a86"
+        }
+    }
+}
