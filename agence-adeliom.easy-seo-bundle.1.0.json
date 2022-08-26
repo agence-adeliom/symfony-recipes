@@ -1,0 +1,36 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-seo-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasySeoBundle\\EasySeoBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/easy_seo.yaml": {
+                    "contents": [
+                        "easy_seo:",
+                        "  title:",
+                        "    suffix: ACME # Change the title suffix",
+                        "    separator: '|' # Change the title separator",
+                        "  breadcrumbs:",
+                        "    class: 'breadcrumb'",
+                        "    item_class: 'breadcrumb-item'",
+                        "    link_class: ''",
+                        "    current_class: 'active'",
+                        "    separator: '>'",
+                        "    separator_class: 'breadcrumb-separator'",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "f7a991a0caaf8eb384c8adfa87155f0349cf41d3"
+        }
+    }
+}

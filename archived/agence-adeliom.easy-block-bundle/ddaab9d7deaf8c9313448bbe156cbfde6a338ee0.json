@@ -1,0 +1,114 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-block-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyBlockBundle\\EasyBlockBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/",
+                    "templates/": "templates/"
+                }
+            },
+            "files": {
+                "config/packages/easy_block.yaml": {
+                    "contents": [
+                        "easy_block:",
+                        "  block_class: App\\Entity\\EasyBlock\\Block",
+                        "  block_repository: App\\Repository\\EasyBlock\\BlockRepository",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Blocks/Shared/.gitignore": {
+                    "contents": [
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyBlock/BlockCrudController.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyBlock;",
+                        "",
+                        "use Adeliom\\EasyBlockBundle\\Controller\\BlockCrudController as BaseBlockCrudController;",
+                        "use App\\Entity\\EasyBlock\\Block;",
+                        "",
+                        "class BlockCrudController extends BaseBlockCrudController",
+                        "{",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return Block::class;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyBlock/Block.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\EasyBlock;",
+                        "",
+                        "use Adeliom\\EasyBlockBundle\\Entity\\Block as BaseBlock;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: \\App\\Repository\\EasyBlock\\BlockRepository::class)]",
+                        "#[ORM\\Table(name: 'easy_block__block')]",
+                        "#[ORM\\HasLifecycleCallbacks]",
+                        "class Block extends BaseBlock",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/EasyBlock/BlockRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Repository\\EasyBlock;",
+                        "",
+                        "use Adeliom\\EasyBlockBundle\\Repository\\BlockRepository as BaseBlockRepository;",
+                        "use App\\Entity\\EasyBlock\\Block;",
+                        "use Doctrine\\Persistence\\ManagerRegistry;",
+                        "",
+                        "/**",
+                        " * @method Block|null   find($id, $lockMode = null, $lockVersion = null)",
+                        " * @method Block|null   findOneBy(array $criteria, array $orderBy = null)",
+                        " * @method array<Block> findAll()",
+                        " * @method array<Block> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)",
+                        " */",
+                        "class BlockRepository extends BaseBlockRepository",
+                        "{",
+                        "    public function __construct(ManagerRegistry $registry)",
+                        "    {",
+                        "        parent::__construct($registry, Block::class);",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "templates/blocks/shared/.gitignore": {
+                    "contents": [
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "ddaab9d7deaf8c9313448bbe156cbfde6a338ee0"
+        }
+    }
+}

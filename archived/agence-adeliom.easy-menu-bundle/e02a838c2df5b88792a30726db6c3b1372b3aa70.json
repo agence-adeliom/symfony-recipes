@@ -1,0 +1,223 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-menu-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyMenuBundle\\EasyMenuBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/easy_menu.yaml": {
+                    "contents": [
+                        "easy_menu:",
+                        "  menu:",
+                        "    class: App\\Entity\\EasyMenu\\Menu",
+                        "    repository: App\\Repository\\EasyMenu\\MenuRepository",
+                        "    crud: App\\Controller\\Admin\\EasyMenu\\MenuCrudController",
+                        "  menu_item:",
+                        "    class: App\\Entity\\EasyMenu\\MenuItem",
+                        "    repository: App\\Repository\\EasyMenu\\MenuItemRepository",
+                        "    crud: App\\Controller\\Admin\\EasyMenu\\MenuItemCrudController",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyMenu/MenuCrudController.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyMenu;",
+                        "",
+                        "use Adeliom\\EasyCommonBundle\\Enum\\ThreeStateStatusEnum;",
+                        "use Adeliom\\EasyMenuBundle\\Controller\\MenuCrudController as BaseMenuCrudController;",
+                        "use App\\Entity\\EasyMenu\\Menu;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Action;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Actions;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Crud;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Filters;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Filter\\ChoiceFilter;",
+                        "",
+                        "class MenuCrudController extends BaseMenuCrudController",
+                        "{",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return Menu::class;",
+                        "    }",
+                        "",
+                        "    public function configureActions(Actions $actions): Actions",
+                        "    {",
+                        "        $actions = parent::configureActions($actions);",
+                        "",
+                        "        return $actions",
+                        "            ->add(Crud::PAGE_INDEX, Action::DETAIL)",
+                        "        ;",
+                        "    }",
+                        "",
+                        "    public function configureFilters(Filters $filters): Filters",
+                        "    {",
+                        "        $filters->add(ChoiceFilter::new('state', 'Status')->setChoices(ThreeStateStatusEnum::toArray()));",
+                        "",
+                        "        return $filters;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyMenu/MenuItemCrudController.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyMenu;",
+                        "",
+                        "use Adeliom\\EasyCommonBundle\\Enum\\ThreeStateStatusEnum;",
+                        "use Adeliom\\EasyMenuBundle\\Controller\\MenuItemCrudController as BaseMenuItemCrudController;",
+                        "use App\\Entity\\EasyMenu\\MenuItem;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Action;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Actions;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Crud;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Filters;",
+                        "use EasyCorp\\Bundle\\EasyAdminBundle\\Filter\\ChoiceFilter;",
+                        "",
+                        "class MenuItemCrudController extends BaseMenuItemCrudController",
+                        "{",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return MenuItem::class;",
+                        "    }",
+                        "",
+                        "    public function configureActions(Actions $actions): Actions",
+                        "    {",
+                        "        $actions = parent::configureActions($actions);",
+                        "",
+                        "        return $actions",
+                        "            ->add(Crud::PAGE_INDEX, Action::DETAIL)",
+                        "        ;",
+                        "    }",
+                        "",
+                        "    public function configureFilters(Filters $filters): Filters",
+                        "    {",
+                        "        $filters->add(ChoiceFilter::new('state', 'Status')->setChoices(ThreeStateStatusEnum::toArray()));",
+                        "",
+                        "        return $filters;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyMenu/Menu.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\EasyMenu;",
+                        "",
+                        "use Adeliom\\EasyMenuBundle\\Entity\\MenuEntity as BaseMenuEntity;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: \\App\\Repository\\EasyMenu\\MenuRepository::class)]",
+                        "#[ORM\\HasLifecycleCallbacks]",
+                        "#[ORM\\Table(name: 'easy_menu__menus')]",
+                        "class Menu extends BaseMenuEntity",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyMenu/MenuItem.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\EasyMenu;",
+                        "",
+                        "use Adeliom\\EasyMenuBundle\\Entity\\MenuItemEntity as BaseMenuItemEntity;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: \\App\\Repository\\EasyMenu\\MenuItemRepository::class)]",
+                        "#[ORM\\HasLifecycleCallbacks]",
+                        "#[ORM\\Table(name: 'easy_menu__menus_items')]",
+                        "class MenuItem extends BaseMenuItemEntity",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/EasyMenu/MenuItemRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Repository\\EasyMenu;",
+                        "",
+                        "use Adeliom\\EasyMenuBundle\\Repository\\MenuItemRepository as BaseMenuItemRepository;",
+                        "use App\\Entity\\EasyMenu\\MenuItem;",
+                        "use Doctrine\\ORM\\EntityManager;",
+                        "",
+                        "/**",
+                        " * @method MenuItem|null   find($id, $lockMode = null, $lockVersion = null)",
+                        " * @method MenuItem|null   findOneBy(array $criteria, array $orderBy = null)",
+                        " * @method array<MenuItem> findAll()",
+                        " * @method array<MenuItem> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)",
+                        " */",
+                        "class MenuItemRepository extends BaseMenuItemRepository",
+                        "{",
+                        "    public function __construct(EntityManager $entityManager)",
+                        "    {",
+                        "        parent::__construct($entityManager, $entityManager->getClassMetadata(MenuItem::class));",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/EasyMenu/MenuRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Repository\\EasyMenu;",
+                        "",
+                        "use Adeliom\\EasyMenuBundle\\Repository\\MenuRepository as BaseMenuRepository;",
+                        "use App\\Entity\\EasyMenu\\Menu;",
+                        "use Doctrine\\Persistence\\ManagerRegistry;",
+                        "",
+                        "/**",
+                        " * @method Menu|null   find($id, $lockMode = null, $lockVersion = null)",
+                        " * @method Menu|null   findOneBy(array $criteria, array $orderBy = null)",
+                        " * @method array<Menu> findAll()",
+                        " * @method array<Menu> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)",
+                        " */",
+                        "class MenuRepository extends BaseMenuRepository",
+                        "{",
+                        "    public function __construct(ManagerRegistry $registry)",
+                        "    {",
+                        "        parent::__construct($registry, Menu::class);",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "e02a838c2df5b88792a30726db6c3b1372b3aa70"
+        }
+    }
+}

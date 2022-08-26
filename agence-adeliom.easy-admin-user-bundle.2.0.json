@@ -1,0 +1,166 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-admin-user-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyAdminUserBundle\\EasyAdminUserBundle": [
+                        "all"
+                    ],
+                    "SymfonyCasts\\Bundle\\ResetPassword\\SymfonyCastsResetPasswordBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/easy_admin_user.yaml": {
+                    "contents": [
+                        "easy_admin_user:",
+                        "  user_class: App\\Entity\\EasyAdmin\\User",
+                        "  user_repository: App\\Repository\\EasyAdmin\\UserRepository",
+                        "  reset_password_class: App\\Entity\\EasyAdmin\\ResetPasswordRequest",
+                        "  reset_password_repository: App\\Repository\\EasyAdmin\\ResetPasswordRequestRepository",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/packages/reset_password.yaml": {
+                    "contents": [
+                        "symfonycasts_reset_password:",
+                        "    request_password_repository: \"%easy_admin_user.reset_password_repository%\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/easy_admin_user.yaml": {
+                    "contents": [
+                        "easy_admin_user:",
+                        "  resource: '@EasyAdminUserBundle/Resources/config/routes.yaml'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyAdminUser/EasyAdminUserCrudController.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyAdminUser;",
+                        "",
+                        "use Adeliom\\EasyAdminUserBundle\\Controller\\Admin\\EasyAdminUserCrudController as BaseEasyAdminUserCrudController;",
+                        "use App\\Entity\\EasyAdmin\\User;",
+                        "",
+                        "class EasyAdminUserCrudController extends BaseEasyAdminUserCrudController",
+                        "{",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return User::class;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyAdmin/ResetPasswordRequest.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\EasyAdmin;",
+                        "",
+                        "use Adeliom\\EasyAdminUserBundle\\Entity\\ResetPasswordRequest as BaseResetPasswordRequest;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: \\App\\Repository\\EasyAdmin\\ResetPasswordRequestRepository::class)]",
+                        "#[ORM\\Table(name: 'easy_admin__reset_password_request')]",
+                        "#[ORM\\HasLifecycleCallbacks]",
+                        "class ResetPasswordRequest extends BaseResetPasswordRequest",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyAdmin/User.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\EasyAdmin;",
+                        "",
+                        "use Adeliom\\EasyAdminUserBundle\\Entity\\User as BaseUser;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: \\App\\Repository\\EasyAdmin\\UserRepository::class)]",
+                        "#[ORM\\Table(name: 'easy_admin__user')]",
+                        "#[ORM\\HasLifecycleCallbacks]",
+                        "class User extends BaseUser",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/EasyAdmin/ResetPasswordRequestRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Repository\\EasyAdmin;",
+                        "",
+                        "use Adeliom\\EasyAdminUserBundle\\Repository\\ResetPasswordRequestRepository as BaseResetPasswordRequestRepository;",
+                        "use App\\Entity\\EasyAdmin\\ResetPasswordRequest;",
+                        "use Doctrine\\Persistence\\ManagerRegistry;",
+                        "",
+                        "class ResetPasswordRequestRepository extends BaseResetPasswordRequestRepository",
+                        "{",
+                        "    public function __construct(ManagerRegistry $registry)",
+                        "    {",
+                        "        parent::__construct($registry, ResetPasswordRequest::class);",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/EasyAdmin/UserRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Repository\\EasyAdmin;",
+                        "",
+                        "use Adeliom\\EasyAdminUserBundle\\Repository\\UserRepository as BaseUserRepository;",
+                        "use App\\Entity\\EasyAdmin\\User;",
+                        "use Doctrine\\Persistence\\ManagerRegistry;",
+                        "",
+                        "/**",
+                        " * @method User|null   find($id, $lockMode = null, $lockVersion = null)",
+                        " * @method User|null   findOneBy(array $criteria, array $orderBy = null)",
+                        " * @method array<User> findAll()",
+                        " * @method array<User> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)",
+                        " */",
+                        "class UserRepository extends BaseUserRepository",
+                        "{",
+                        "    public function __construct(ManagerRegistry $registry)",
+                        "    {",
+                        "        parent::__construct($registry, User::class);",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "a7b980fe5a73472c89d87cdb6c694faf22cfd0f8"
+        }
+    }
+}

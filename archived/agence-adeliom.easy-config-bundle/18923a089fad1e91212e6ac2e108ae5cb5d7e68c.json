@@ -1,0 +1,94 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-config-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyConfigBundle\\EasyConfigBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/easy_config.yaml": {
+                    "contents": [
+                        "easy_config:",
+                        "  config_class: App\\Entity\\EasyConfig\\Config",
+                        "  config_repository: App\\Repository\\EasyConfig\\ConfigRepository",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Controller/Admin/EasyConfig/ConfigCrudController.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Controller\\Admin\\EasyConfig;",
+                        "",
+                        "use Adeliom\\EasyConfigBundle\\Controller\\Admin\\EasyConfigCrudController as BaseConfigCrudController;",
+                        "use App\\Entity\\EasyConfig\\Config;",
+                        "",
+                        "class ConfigCrudController extends BaseConfigCrudController",
+                        "{",
+                        "    public static function getEntityFqcn(): string",
+                        "    {",
+                        "        return Config::class;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyConfig/Config.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\EasyConfig;",
+                        "",
+                        "use Adeliom\\EasyConfigBundle\\Entity\\Config as BaseConfig;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: \\App\\Repository\\EasyConfig\\ConfigRepository::class)]",
+                        "#[ORM\\Table(name: 'easy_config__config')]",
+                        "class Config extends BaseConfig",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Repository/EasyConfig/ConfigRepository.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Repository\\EasyConfig;",
+                        "",
+                        "use Adeliom\\EasyConfigBundle\\Repository\\ConfigRepository as BaseConfigRepository;",
+                        "use App\\Entity\\EasyConfig\\Config;",
+                        "use Doctrine\\Persistence\\ManagerRegistry;",
+                        "",
+                        "/**",
+                        " * @method Config|null find($id, $lockMode = null, $lockVersion = null)",
+                        " * @method Config|null findOneBy(array $criteria, array $orderBy = null)",
+                        " * @method Config[]    findAll()",
+                        " * @method Config[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)",
+                        " */",
+                        "class ConfigRepository extends BaseConfigRepository",
+                        "{",
+                        "    public function __construct(ManagerRegistry $registry)",
+                        "    {",
+                        "        parent::__construct($registry, Config::class);",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "18923a089fad1e91212e6ac2e108ae5cb5d7e68c"
+        }
+    }
+}
