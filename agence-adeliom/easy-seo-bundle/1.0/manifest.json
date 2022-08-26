@@ -1,0 +1,8 @@
+{
+    "bundles": {
+        "Adeliom\\EasySeoBundle\\EasySeoBundle": ["all"]
+    },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/"
+    }
+}

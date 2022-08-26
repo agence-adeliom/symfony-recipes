@@ -1,0 +1,11 @@
+easy_seo:
+  title:
+    suffix: ACME # Change the title suffix
+    separator: '|' # Change the title separator
+  breadcrumbs:
+    class: 'breadcrumb'
+    item_class: 'breadcrumb-item'
+    link_class: ''
+    current_class: 'active'
+    separator: '>'
+    separator_class: 'breadcrumb-separator'
