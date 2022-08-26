@@ -7,7 +7,15 @@ doctrine:
     types:
       easy_media_type: Adeliom\EasyMediaBundle\Types\EasyMediaType
 
+flysystem:
+  storages:
+    medias.storage:
+      adapter: 'local'
+      options:
+        directory: '%kernel.project_dir%/var/storage/medias'
+
 easy_media:
+  storage_name: flysystem.adapter.medias.storage
   media_entity: App\Entity\EasyMedia\Media
   folder_entity: App\Entity\EasyMedia\Folder
 
