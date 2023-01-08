@@ -6,7 +6,7 @@ namespace App\Repository\EasyMenu;
 
 use Adeliom\EasyMenuBundle\Repository\MenuItemRepository as BaseMenuItemRepository;
 use App\Entity\EasyMenu\MenuItem;
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method MenuItem|null   find($id, $lockMode = null, $lockVersion = null)
@@ -16,8 +16,8 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class MenuItemRepository extends BaseMenuItemRepository
 {
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($entityManager, $entityManager->getClassMetadata(MenuItem::class));
+        parent::__construct($registry, MenuItem::class);
     }
 }
