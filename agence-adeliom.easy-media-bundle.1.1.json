@@ -1,0 +1,94 @@
+{
+    "manifests": {
+        "agence-adeliom/easy-media-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Adeliom\\EasyMediaBundle\\EasyMediaBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/easy_media.yaml": {
+                    "contents": [
+                        "twig:",
+                        "  form_themes:",
+                        "    - '@EasyMedia/form/easy-media.html.twig'",
+                        "",
+                        "doctrine:",
+                        "  dbal:",
+                        "    types:",
+                        "      easy_media_type: Adeliom\\EasyMediaBundle\\Types\\EasyMediaType",
+                        "",
+                        "easy_media:",
+                        "  media_entity: App\\Entity\\EasyMedia\\Media",
+                        "  folder_entity: App\\Entity\\EasyMedia\\Folder",
+                        "",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/easy_media.yaml": {
+                    "contents": [
+                        "easy_media:",
+                        "  # loads routes from the given routing file stored in some bundle",
+                        "  resource: '@EasyMediaBundle/Resources/config/routes.xml'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyMedia/Folder.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\EasyMedia;",
+                        "",
+                        "use Adeliom\\EasyMediaBundle\\Entity\\Folder as BaseFolder;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity()",
+                        " *",
+                        " * @ORM\\Table(name=\"easy_media__folder\")",
+                        " */",
+                        "class Folder extends BaseFolder",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EasyMedia/Media.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\EasyMedia;",
+                        "",
+                        "use Adeliom\\EasyMediaBundle\\Entity\\Media as BaseMedia;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity()",
+                        " *",
+                        " * @ORM\\Table(name=\"easy_media__media\")",
+                        " */",
+                        "class Media extends BaseMedia",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "b504c158e6cbd02172c508d0cf23477b8e207bee"
+        }
+    }
+}

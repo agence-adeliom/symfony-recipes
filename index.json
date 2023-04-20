@@ -1,0 +1,22 @@
+{
+    "aliases": [],
+    "recipes": {
+        "agence-adeliom/easy-media-bundle": [
+            "1.0",
+            "1.1",
+            "2.0"
+        ]
+    },
+    "recipe-conflicts": [],
+    "versions": [],
+    "branch": "main",
+    "is_contrib": false,
+    "_links": {
+        "repository": "github.com/agence-adeliom/symfony-recipes",
+        "origin_template": "{package}:{version}@github.com/agence-adeliom/symfony-recipes:main",
+        "recipe_template": "https://raw.githubusercontent.com/agence-adeliom/symfony-recipes/flex/pull-1/{package_dotted}.{version}.json",
+        "recipe_template_relative": "{package_dotted}.{version}.json",
+        "archived_recipes_template": "https://raw.githubusercontent.com/agence-adeliom/symfony-recipes/flex/pull-1/archived/{package_dotted}/{ref}.json",
+        "archived_recipes_template_relative": "archived/{package_dotted}/{ref}.json"
+    }
+}
