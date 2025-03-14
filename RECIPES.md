@@ -13,7 +13,7 @@ Additional recipes can be found on the [Main Recipes Repository](https://github.
 | [agence-adeliom/easy-faq-bundle](https://packagist.org/packages/agence-adeliom/easy-faq-bundle) | [2.0](agence-adeliom/easy-faq-bundle/2.0) |
 | [agence-adeliom/easy-fields-bundle](https://packagist.org/packages/agence-adeliom/easy-fields-bundle) | [1.0](agence-adeliom/easy-fields-bundle/1.0) |
 | [agence-adeliom/easy-gutenberg-bundle](https://packagist.org/packages/agence-adeliom/easy-gutenberg-bundle) | [2.0](agence-adeliom/easy-gutenberg-bundle/2.0) |
-| [agence-adeliom/easy-media-bundle](https://packagist.org/packages/agence-adeliom/easy-media-bundle) | [2.0](agence-adeliom/easy-media-bundle/2.0) |
+| [agence-adeliom/easy-media-bundle](https://packagist.org/packages/agence-adeliom/easy-media-bundle) | [3.0](agence-adeliom/easy-media-bundle/3.0) |
 | [agence-adeliom/easy-menu-bundle](https://packagist.org/packages/agence-adeliom/easy-menu-bundle) | [2.0](agence-adeliom/easy-menu-bundle/2.0) |
 | [agence-adeliom/easy-page-bundle](https://packagist.org/packages/agence-adeliom/easy-page-bundle) | [2.0](agence-adeliom/easy-page-bundle/2.0) |
 | [agence-adeliom/easy-redirect-bundle](https://packagist.org/packages/agence-adeliom/easy-redirect-bundle) | [2.0](agence-adeliom/easy-redirect-bundle/2.0) |
